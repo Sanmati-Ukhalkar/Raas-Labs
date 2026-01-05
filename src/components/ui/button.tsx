@@ -5,26 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-border bg-transparent text-foreground hover:bg-muted hover:border-muted-foreground/40",
+        outline: "border border-border bg-transparent text-foreground hover:bg-muted",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Premium hero button - solid, confident
-        hero: "bg-foreground text-background font-semibold tracking-wide shadow-[0_1px_2px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.1)] hover:shadow-[0_4px_16px_rgba(255,255,255,0.1),0_0_0_1px_rgba(255,255,255,0.2)] active:scale-[0.98] active:shadow-none",
+        // Premium hero button - solid, weighty
+        hero: "bg-foreground text-background tracking-wide shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_2px_4px_rgba(0,0,0,0.2)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_8px_24px_rgba(0,0,0,0.3)] active:scale-[0.98]",
         // Subtle outline button
-        heroOutline: "border border-foreground/20 bg-transparent text-foreground/85 font-medium tracking-wide hover:border-foreground/40 hover:text-foreground hover:bg-foreground/[0.02]",
+        heroOutline: "border border-foreground/15 bg-transparent text-foreground/80 tracking-wide hover:border-foreground/30 hover:text-foreground",
       },
       size: {
         default: "h-10 px-5 py-2",
         sm: "h-9 rounded-lg px-4",
-        lg: "h-12 rounded-xl px-8 text-base",
-        xl: "h-14 rounded-xl px-12 text-[15px] tracking-wide",
+        lg: "h-12 rounded-xl px-8 text-[15px]",
+        xl: "h-[56px] rounded-xl px-14 text-[15px]",
         icon: "h-10 w-10",
       },
     },

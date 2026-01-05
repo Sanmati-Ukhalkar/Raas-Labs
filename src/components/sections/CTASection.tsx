@@ -3,20 +3,20 @@ import { Button } from '@/components/ui/button';
 
 export const CTASection = () => {
   return (
-    <section className="py-40 lg:py-52 relative">
+    <section id="contact" className="py-44 lg:py-56 relative">
       <div className="section-divider absolute top-0 left-0 right-0" />
       
-      <div className="container mx-auto px-6 lg:px-20 relative">
+      <div className="container mx-auto px-6 lg:px-24">
         <FadeIn>
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold mb-7 tracking-[-0.03em] leading-[1.05]">
+          <div className="max-w-lg mx-auto text-center">
+            <h2 className="text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold mb-8 tracking-[-0.04em] leading-[0.95]">
               Let's <span className="gradient-text">Work</span> Together
             </h2>
-            <p className="text-[17px] text-secondary mb-14 max-w-md mx-auto leading-[1.7] font-light">
+            <p className="text-[17px] text-secondary mb-16 leading-[1.8]">
               If you're looking to build influence with intent and scale, let's start a conversation.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Button variant="hero" size="xl" asChild>
                 <a href="https://wa.me/917077149767" target="_blank" rel="noopener noreferrer">
                   <svg className="w-[18px] h-[18px] mr-2" fill="currentColor" viewBox="0 0 24 24">
