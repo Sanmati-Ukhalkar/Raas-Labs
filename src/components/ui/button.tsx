@@ -15,10 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Premium hero button - solid, weighty
-        hero: "bg-foreground text-background tracking-wide shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_2px_4px_rgba(0,0,0,0.2)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_8px_24px_rgba(0,0,0,0.3)] active:scale-[0.98]",
+        // Premium hero button - solid, weighty with subtle glow
+        hero: "bg-foreground text-background tracking-wide shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.3),0_0_30px_-8px_hsl(289_52%_64%/0.4)] active:scale-[0.98] transition-all duration-300",
         // Subtle outline button
-        heroOutline: "border border-foreground/15 bg-transparent text-foreground/80 tracking-wide hover:border-foreground/30 hover:text-foreground",
+        heroOutline: "border border-foreground/20 bg-transparent text-foreground/85 tracking-wide hover:border-primary/40 hover:text-foreground hover:shadow-[0_0_20px_-8px_hsl(289_52%_64%/0.3)] transition-all duration-300",
       },
       size: {
         default: "h-10 px-5 py-2",
