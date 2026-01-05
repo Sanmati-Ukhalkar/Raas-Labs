@@ -3,52 +3,52 @@ import heroVisual from '@/assets/hero-visual.jpg';
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden py-20 lg:py-0">
-      {/* Ambient background glow */}
+    <section className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-20 lg:pt-0 lg:pb-0">
+      {/* Subtle ambient glow - reduced intensity */}
       <div 
-        className="absolute top-1/3 right-1/4 w-[900px] h-[900px] pointer-events-none animate-pulse-glow"
+        className="absolute top-1/4 right-1/3 w-[1000px] h-[1000px] pointer-events-none opacity-60"
         style={{ background: 'var(--gradient-glow)' }}
       />
       
-      <div className="container mx-auto px-6 lg:px-16 xl:px-20">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="container mx-auto px-6 lg:px-20">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           {/* Left: Content */}
-          <div className="space-y-10">
-            <div className="space-y-7 animate-fade-in-up">
-              <p className="text-sm uppercase tracking-[0.2em] text-tertiary font-medium">
+          <div className="space-y-12">
+            <div className="space-y-8 animate-fade-in-up">
+              <p className="label-uppercase">
                 Crafting Your Digital Journey
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.03em]">
+              <h1 className="text-[3.25rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5.25rem] font-bold leading-[0.92] tracking-[-0.035em]">
                 Influence,
                 <br />
                 <span className="gradient-text">Engineered</span>
                 <br />
                 at Scale.
               </h1>
-              <p className="text-lg md:text-xl text-secondary max-w-md leading-relaxed font-light">
+              <p className="text-[17px] md:text-lg text-secondary max-w-[380px] leading-[1.7] font-light">
                 Strategic political consultancy and celebrity PR for leaders, public figures, and brands that matter.
               </p>
             </div>
             
-            <div className="animate-fade-in-up animate-delay-400">
+            <div className="animate-fade-in-up animate-delay-300">
               <Button variant="hero" size="xl" className="group">
                 <span>Let's explore if we're a fit</span>
                 <svg 
-                  className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" 
+                  className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" 
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Button>
             </div>
           </div>
 
           {/* Right: Visual */}
-          <div className="relative animate-fade-in-up animate-delay-200">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden gradient-border glow-effect">
+          <div className="relative animate-fade-in-up animate-delay-150">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden gradient-border">
               <img 
                 src={heroVisual} 
                 alt="Digital influence visualization" 
