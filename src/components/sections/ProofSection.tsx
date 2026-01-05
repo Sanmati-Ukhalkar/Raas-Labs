@@ -9,22 +9,25 @@ const metrics = [
 
 export const ProofSection = () => {
   return (
-    <section className="py-24 lg:py-32 border-t border-border">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-32 lg:py-40 relative">
+      {/* Subtle top divider */}
+      <div className="section-divider absolute top-0 left-0 right-0" />
+      
+      <div className="container mx-auto px-6 lg:px-16 xl:px-20">
         <FadeIn>
-          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-16 text-secondary">
+          <p className="text-sm uppercase tracking-[0.2em] text-tertiary text-center mb-20 font-medium">
             Influence at Massive Scale
-          </h2>
+          </p>
         </FadeIn>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {metrics.map((metric, index) => (
-            <FadeIn key={metric.label} delay={index * 100}>
-              <div className="text-center group">
-                <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 gradient-text">
+            <FadeIn key={metric.label} delay={index * 80}>
+              <div className="text-center lg:text-left">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text tracking-tight">
                   {metric.value}
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground leading-tight">
+                <div className="text-sm md:text-base text-tertiary leading-snug max-w-[140px] mx-auto lg:mx-0">
                   {metric.label}
                 </div>
               </div>
