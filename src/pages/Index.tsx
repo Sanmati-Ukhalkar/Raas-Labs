@@ -1,6 +1,7 @@
 import { Header } from '@/components/sections/Header';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProofSection } from '@/components/sections/ProofSection';
+import { CollaborationsSection } from '@/components/sections/CollaborationsSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { AuthoritySection } from '@/components/sections/AuthoritySection';
 import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
@@ -14,6 +15,7 @@ const Index = () => {
       <main className="pt-16 lg:pt-20">
         <HeroSection />
         <ProofSection />
+        <CollaborationsSection />
         <section id="services">
           <ServicesSection />
         </section>
