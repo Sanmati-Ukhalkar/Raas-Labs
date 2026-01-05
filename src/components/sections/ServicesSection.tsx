@@ -3,19 +3,19 @@ import { FadeIn } from '@/components/FadeIn';
 const services = [
   {
     title: 'Political Consultancy',
-    description: 'Strategic narrative design and campaign amplification for electoral success.',
+    description: 'End-to-end political communication including digital presence, campaign messaging, public sentiment management, and reputation building.',
   },
   {
     title: 'Celebrity & Influencer PR',
-    description: 'Reputation management and media relations for high-profile personalities.',
+    description: 'Personal brand positioning, media amplification, viral reel strategy, and image control for celebrities and high-reach influencers.',
   },
   {
     title: 'Content & Media Production',
-    description: 'Full-scale content creation engineered for viral reach and engagement.',
+    description: 'High-quality reels, promotional videos, political content shoots, video editing, and production.',
   },
   {
     title: 'Digital Reputation Management',
-    description: 'Perception control and crisis management across all digital touchpoints.',
+    description: 'Consistent organic growth, narrative control, crisis handling, and long-term authority building.',
   },
 ];
 
@@ -26,13 +26,16 @@ export const ServicesSection = () => {
       
       <div className="container mx-auto px-6 lg:px-16 xl:px-20">
         <FadeIn>
-          <div className="mb-20">
+          <div className="mb-20 max-w-2xl">
             <p className="text-sm uppercase tracking-[0.2em] text-tertiary mb-5 font-medium">
-              Our Expertise
+              What We Do
             </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em]">
-              What We <span className="gradient-text">Engineer</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] mb-6">
+              Services
             </h2>
+            <p className="text-lg text-secondary leading-relaxed font-light">
+              We help shape narratives, manage perception, and build influence across digital platforms.
+            </p>
           </div>
         </FadeIn>
         

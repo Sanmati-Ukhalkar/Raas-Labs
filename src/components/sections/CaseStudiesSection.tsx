@@ -2,19 +2,19 @@ import { FadeIn } from '@/components/FadeIn';
 
 const caseStudies = [
   {
-    title: 'State-Level Political Narrative Campaign',
-    category: 'Political Strategy',
-    description: 'Engineered perception shift across 50M+ voters through coordinated multi-platform narrative deployment.',
+    title: 'Bhartiye Chhatra Sansad (LPU)',
+    category: 'PR & Digital Reach',
+    description: 'Comprehensive PR and digital reach campaign for one of India\'s largest student parliament initiatives, driving massive engagement and visibility.',
   },
   {
-    title: 'Viral Influencer Brand Launch',
-    category: 'Influencer Marketing',
-    description: 'Orchestrated launch generating 100M+ impressions in 72 hours with strategic creator partnerships.',
+    title: 'Bihar Largest Hindu Event',
+    category: 'PR & Media Amplification',
+    description: 'Full-scale media amplification strategy that positioned the event as a cultural landmark, reaching millions across digital and traditional media.',
   },
   {
-    title: 'Crisis Reputation Management',
-    category: 'PR & Communications',
-    description: 'Rapid response framework that neutralized narrative within 48 hours and restored brand equity.',
+    title: 'Political Campaign Strategy',
+    category: 'Digital Execution',
+    description: 'End-to-end digital strategy and execution for political campaigns, managing narrative, sentiment, and voter engagement at scale.',
   },
 ];
 
@@ -27,10 +27,10 @@ export const CaseStudiesSection = () => {
         <FadeIn>
           <div className="mb-20">
             <p className="text-sm uppercase tracking-[0.2em] text-tertiary mb-5 font-medium">
-              Selected Work
+              Our Work
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em]">
-              Campaigns That <span className="gradient-text">Shaped Influence</span>
+              Campaigns & <span className="gradient-text">Case Studies</span>
             </h2>
           </div>
         </FadeIn>

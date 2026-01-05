@@ -1,10 +1,10 @@
 import { FadeIn } from '@/components/FadeIn';
 
 const points = [
-  'Multi-platform campaign execution',
-  'Dedicated teams per campaign',
-  'High-volume reach management',
-  'End-to-end strategy and amplification',
+  'Active experience across political, celebrity, and influencer campaigns',
+  'Dedicated teams assigned to each project',
+  'Capability to manage high-reach, reputation-sensitive campaigns',
+  'Execution across multiple digital platforms and media formats',
 ];
 
 export const AuthoritySection = () => {
@@ -17,17 +17,13 @@ export const AuthoritySection = () => {
           <FadeIn>
             <div className="lg:sticky lg:top-32">
               <p className="text-sm uppercase tracking-[0.2em] text-tertiary mb-5 font-medium">
-                Why Us
+                Why The Increations
               </p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-7 tracking-[-0.02em] leading-[1.05]">
-                Built for Scale.
+                Built on Experience.
                 <br />
-                <span className="text-secondary">Proven in Execution.</span>
+                <span className="text-secondary">Proven at Scale.</span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-md leading-relaxed font-light">
-                Our infrastructure handles the complexity of massive campaigns 
-                while maintaining precision and impact at every touchpoint.
-              </p>
             </div>
           </FadeIn>
 
