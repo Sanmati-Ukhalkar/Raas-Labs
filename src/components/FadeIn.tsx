@@ -4,9 +4,10 @@ interface FadeInProps {
   children: ReactNode;
   delay?: number;
   className?: string;
+  threshold?: number;
 }
 
-export const FadeIn = ({ children, delay = 0, className = '' }: FadeInProps) => {
+export const FadeIn = ({ children, delay = 0, className = '', threshold = 0.15 }: FadeInProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -18,7 +19,7 @@ export const FadeIn = ({ children, delay = 0, className = '' }: FadeInProps) => 
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '50px' }
+      { threshold, rootMargin: '20px' }
     );
 
     if (ref.current) {
@@ -26,16 +27,16 @@ export const FadeIn = ({ children, delay = 0, className = '' }: FadeInProps) => 
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${className}`}
+      className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-        transitionDelay: `${delay}ms`,
+        transform: isVisible ? 'translateY(0)' : 'translateY(28px)',
+        transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
       }}
     >
       {children}
