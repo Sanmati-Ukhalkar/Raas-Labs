@@ -15,6 +15,9 @@ export const HeroSection = () => {
           {/* Left: Content */}
           <div className="space-y-10">
             <div className="space-y-7 animate-fade-in-up">
+              <p className="text-sm uppercase tracking-[0.2em] text-tertiary font-medium">
+                Crafting Your Digital Journey
+              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.03em]">
                 Influence,
                 <br />
@@ -23,13 +26,13 @@ export const HeroSection = () => {
                 at Scale.
               </h1>
               <p className="text-lg md:text-xl text-secondary max-w-md leading-relaxed font-light">
-                We design perception, authority, and reach for creators and brands operating at the top.
+                Strategic political consultancy and celebrity PR for leaders, public figures, and brands that matter.
               </p>
             </div>
             
             <div className="animate-fade-in-up animate-delay-400">
               <Button variant="hero" size="xl" className="group">
-                <span>Explore working together</span>
+                <span>Let's explore if we're a fit</span>
                 <svg 
                   className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" 
                   fill="none" 

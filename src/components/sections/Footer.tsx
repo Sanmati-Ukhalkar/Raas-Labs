@@ -1,33 +1,40 @@
 export const Footer = () => {
   return (
-    <footer className="py-16 border-t border-border relative">
+    <footer className="py-20 border-t border-border relative">
       <div className="container mx-auto px-6 lg:px-16 xl:px-20">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-16">
+          {/* About */}
           <div>
-            <div className="text-xl font-semibold tracking-tight mb-2">The Increations</div>
-            <div className="text-sm text-tertiary">
-              Influence & PR Agency
-            </div>
+            <div className="text-xl font-semibold tracking-tight mb-4">The Increations</div>
+            <p className="text-muted-foreground leading-relaxed font-light max-w-md">
+              The Increations is a digital-first PR and political consultancy agency helping leaders, public figures, and brands shape influence and authority.
+            </p>
           </div>
           
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10 text-sm text-tertiary">
-            <a 
-              href="mailto:contact@theincreations.com" 
-              className="hover:text-foreground transition-colors duration-300"
-            >
-              contact@theincreations.com
-            </a>
-            <a 
-              href="tel:+919876543210" 
-              className="hover:text-foreground transition-colors duration-300"
-            >
-              +91-9876543210
-            </a>
+          {/* Contact */}
+          <div className="md:text-right">
+            <div className="text-sm uppercase tracking-[0.15em] text-tertiary mb-4 font-medium">
+              Contact
+            </div>
+            <div className="space-y-2">
+              <a 
+                href="tel:+917077149767" 
+                className="block text-secondary hover:text-foreground transition-colors duration-300"
+              >
+                +91-7077149767
+              </a>
+              <a 
+                href="mailto:contact@theincreations.com" 
+                className="block text-secondary hover:text-foreground transition-colors duration-300"
+              >
+                contact@theincreations.com
+              </a>
+            </div>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-border/50 text-xs text-tertiary">
-          © {new Date().getFullYear()} The Increations. All rights reserved.
+        <div className="pt-8 border-t border-border/50 text-sm text-tertiary">
+          © 2025 The Increations. All rights reserved.
         </div>
       </div>
     </footer>
