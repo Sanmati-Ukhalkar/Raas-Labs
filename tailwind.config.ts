@@ -47,6 +47,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand Specific Colors (Locked System)
+        brand: {
+          purple: "#be73d4",
+          pink: "#fe7cb7",
+          violet: "#6f68fe",
+          dark: "#050505",
+          surface: "#0b0b0f",
+          card: "#111114",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -57,9 +66,18 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
-        'display': ['5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        'heading': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'subheading': ['2rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'display': ['3.5rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '800' }], // Mobile default
+        'heading': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'subheading': ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+      },
+      screens: {
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1440px',
+      },
+      boxShadow: {
+        'glow': 'var(--shadow-glow)',
       },
       keyframes: {
         "accordion-down": {

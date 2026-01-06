@@ -18,23 +18,29 @@ const caseStudies = [
   },
 ];
 
-export const CaseStudiesSection = () => {
+interface CaseStudiesSectionProps {
+  hideHeader?: boolean;
+}
+
+export const CaseStudiesSection = ({ hideHeader = false }: CaseStudiesSectionProps) => {
   return (
-    <section className="py-40 lg:py-52 relative">
+    <section className="py-20 lg:py-32 relative">
       <div className="section-divider absolute top-0 left-0 right-0" />
-      
+
       <div className="container mx-auto px-6 lg:px-24">
-        <FadeIn>
-          <div className="mb-24">
-            <p className="label-uppercase mb-8">
-              Our Work
-            </p>
-            <h2 className="text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold tracking-[-0.04em] leading-[0.95]">
-              Campaigns & <span className="gradient-text">Case Studies</span>
-            </h2>
-          </div>
-        </FadeIn>
-        
+        {!hideHeader && (
+          <FadeIn>
+            <div className="mb-16 lg:mb-24">
+              <p className="label-uppercase mb-8">
+                Our Work
+              </p>
+              <h2 className="text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold tracking-[-0.04em] leading-[0.95]">
+                Campaigns & <span className="gradient-text">Case Studies</span>
+              </h2>
+            </div>
+          </FadeIn>
+        )}
+
         <div className="grid md:grid-cols-3 gap-6">
           {caseStudies.map((study, index) => (
             <FadeIn key={study.title} delay={index * 60}>

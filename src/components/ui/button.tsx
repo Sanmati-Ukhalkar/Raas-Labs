@@ -9,16 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow hover:shadow-glow/80",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-border bg-transparent text-foreground hover:bg-muted",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Premium hero button - solid, weighty with subtle glow
-        hero: "bg-foreground text-background tracking-wide shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.3),0_0_30px_-8px_hsl(289_52%_64%/0.4)] active:scale-[0.98] transition-all duration-300",
-        // Subtle outline button
-        heroOutline: "border border-foreground/20 bg-transparent text-foreground/85 tracking-wide hover:border-primary/40 hover:text-foreground hover:shadow-[0_0_20px_-8px_hsl(289_52%_64%/0.3)] transition-all duration-300",
+        // Primary CTA (Locked System) - White, Text Black, 999px radius
+        hero: "bg-white text-black rounded-full shadow-lg hover:bg-neutral-200 transition-colors duration-200",
+        // Secondary CTA (Locked System) - Transparent, Border 1px
+        heroOutline: "bg-transparent text-white border border-white/15 rounded-full hover:border-white/40 transition-colors duration-200",
       },
       size: {
         default: "h-10 px-5 py-2",
@@ -37,7 +37,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
