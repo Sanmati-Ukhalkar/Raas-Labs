@@ -216,3 +216,25 @@
   animation-delay: 0.3s;
   opacity: 0;
 }
+
+/* Custom Premium Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fe7cb1 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  /* Slightly thinner for global/mobile use */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fe7cb1;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}

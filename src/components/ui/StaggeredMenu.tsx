@@ -148,13 +148,25 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     // layerStates.forEach((ls, i) => { ... });
 
     const lastTime = 0;
-    const panelInsertTime = 0.1;
-    const panelDuration = 0.9;
+    const panelInsertTime = 0.05;
+    const panelDuration = isMobile ? 0.55 : 0.7; // Snappier panel slide
 
     tl.fromTo(
       panel,
       { xPercent: panelStart },
-      { xPercent: 0, duration: panelDuration, ease: 'power3.out', force3D: true },
+      {
+        xPercent: 0,
+        duration: panelDuration,
+        ease: isMobile ? 'power2.out' : 'power2.inOut',
+        force3D: true,
+        onStart: () => {
+          panel.style.willChange = 'transform';
+          // Lower hero z-index immediately
+          const heroTransition = document.querySelector('.hero-brand-container') as HTMLElement;
+          if (heroTransition) heroTransition.style.zIndex = '5';
+        },
+        onComplete: () => { panel.style.willChange = 'auto'; }
+      },
       panelInsertTime
     );
 
@@ -164,14 +176,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       tl.to(
         itemEls,
-        { yPercent: 0, rotate: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.1, from: 'start' } },
+        {
+          yPercent: 0,
+          rotate: 0,
+          duration: isMobile ? 0.65 : 0.8,
+          ease: 'power2.out',
+          stagger: { each: isMobile ? 0.04 : 0.07, from: 'start' }
+        },
         itemsStart
       );
 
       if (numberEls.length) {
         tl.to(
           numberEls,
-          { duration: 0.6, ease: 'power2.out', ['--sm-num-opacity' as any]: 1, stagger: { each: 0.08, from: 'start' } },
+          { duration: 0.6, ease: 'power2.out', ['--sm-num-opacity' as any]: 1, stagger: { each: isMobile ? 0.04 : 0.08, from: 'start' } },
           itemsStart + 0.1
         );
       }
@@ -233,10 +251,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     closeTweenRef.current = gsap.to(all, {
       xPercent: offscreen,
-      duration: 0.32,
-      ease: 'power3.in',
+      duration: 0.35,
+      ease: 'power2.inOut',
       overwrite: 'auto',
+      onStart: () => { if (panel) panel.style.willChange = 'transform'; },
       onComplete: () => {
+        if (panel) panel.style.willChange = 'auto';
+        // Restore hero z-index
+        const heroTransition = document.querySelector('.hero-brand-container') as HTMLElement;
+        if (heroTransition) heroTransition.style.zIndex = '60';
+
         const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel')) as HTMLElement[];
         if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
 

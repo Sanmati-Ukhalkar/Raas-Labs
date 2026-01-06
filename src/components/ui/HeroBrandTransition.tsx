@@ -1,14 +1,36 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Share2, BarChart3, Users, Video, Award, Hexagon, Circle, Square, Triangle, Sparkles, Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SUPPORTING_ICONS = [
+    // Original Signal Icons
+    { Icon: Share2, desktop: { top: '15%', left: '10%' }, mobile: { top: '15%', left: '10%' }, type: 'signal' },
+    { Icon: Video, desktop: { top: '25%', right: '12%' }, mobile: { top: '35%', right: '8%' }, type: 'signal' },
+    { Icon: BarChart3, desktop: { bottom: '25%', left: '15%' }, mobile: { bottom: '25%', left: '12%' }, type: 'signal' },
+    { Icon: Users, desktop: { bottom: '18%', right: '10%' }, mobile: null, type: 'signal' },
+    { Icon: Award, desktop: { top: '45%', right: '8%' }, mobile: null, type: 'signal' },
+
+    // Anchor Icons (Near Brand)
+    { Icon: Square, desktop: { top: '38%', left: '38%' }, mobile: { top: '42%', left: '35%' }, type: 'anchor' },
+    { Icon: Circle, desktop: { top: '38%', right: '38%' }, mobile: { top: '42%', right: '35%' }, type: 'anchor' },
+    { Icon: Triangle, desktop: { bottom: '38%', left: '38%' }, mobile: null, type: 'anchor' },
+    { Icon: Hexagon, desktop: { bottom: '38%', right: '38%' }, mobile: null, type: 'anchor' },
+
+    // Floating Icons (Periphery)
+    { Icon: Sparkles, desktop: { top: '65%', left: '20%' }, mobile: null, type: 'floating' },
+    { Icon: Zap, desktop: { top: '12%', right: '25%' }, mobile: null, type: 'floating' },
+];
 
 export default function HeroBrandTransition() {
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLSpanElement>(null);
-    const imgRef = useRef<HTMLImageElement>(null);
+    const microTextRef = useRef<HTMLDivElement>(null);
+    const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const plusRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useLayoutEffect(() => {
         const container = containerRef.current;
@@ -66,7 +88,49 @@ export default function HeroBrandTransition() {
                     fontWeight: 600,
                     duration: 1,
                     ease: "power2.inOut" // Heavy, gradual motion
+                }, 0);
+
+                // Supporting Elements Animation
+                tl.to(microTextRef.current, {
+                    autoAlpha: 0,
+                    y: -20,
+                    duration: 0.4,
+                    ease: "power2.in"
+                }, 0);
+
+                iconsRef.current.forEach((icon, i) => {
+                    if (!icon) return;
+                    const data = SUPPORTING_ICONS[i];
+                    // Outward translation logic
+                    const xDir = data.desktop?.left ? -1 : 1;
+                    const yDir = data.desktop?.top ? -1 : 1;
+
+                    tl.to(icon, {
+                        autoAlpha: 0,
+                        x: 80 * xDir,
+                        y: 80 * yDir,
+                        scale: 0.6,
+                        duration: 0.85,
+                        ease: "power2.in"
+                    }, 0);
                 });
+
+                tl.to(plusRefs.current, {
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    ease: "power2.in"
+                }, 0);
+
+                // Subtle background parallax via hero section
+                const heroBg = document.querySelector('#hero .z-0');
+                if (heroBg) {
+                    tl.to(heroBg, {
+                        y: 100,
+                        scale: 1.1,
+                        duration: 1,
+                        ease: "none"
+                    }, 0);
+                }
             });
 
             // Mobile Setup
@@ -103,7 +167,29 @@ export default function HeroBrandTransition() {
                     fontWeight: 600,
                     duration: 1,
                     ease: "power2.inOut"
+                }, 0);
+
+                tl.to(microTextRef.current, {
+                    autoAlpha: 0,
+                    y: -10,
+                    duration: 0.3,
+                    ease: "power2.in"
+                }, 0);
+
+                iconsRef.current.forEach((icon, i) => {
+                    if (!icon) return;
+                    tl.to(icon, {
+                        autoAlpha: 0,
+                        y: -30,
+                        duration: 0.6,
+                        ease: "power2.in"
+                    }, 0);
                 });
+                tl.to(plusRefs.current, {
+                    autoAlpha: 0,
+                    duration: 0.4,
+                    ease: "power2.in"
+                }, 0);
             });
 
         }, containerRef);
@@ -115,7 +201,7 @@ export default function HeroBrandTransition() {
     }, []);
 
     return (
-        <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[60]">
+        <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[60] hero-brand-container">
             <style>{`
           /* Force real navbar text to be centered independent of logo */
           .sm-logo span {
@@ -134,11 +220,59 @@ export default function HeroBrandTransition() {
           }
        `}</style>
             {/* The Text Element */}
-            <div ref={wrapperRef} className="absolute whitespace-nowrap text-white pointer-events-none origin-center">
+            <div ref={wrapperRef} className="absolute flex flex-col items-center whitespace-nowrap text-white pointer-events-none origin-center">
                 <span ref={textRef} className="text-[17px] font-extrabold tracking-tight leading-none">
                     The Increations
                 </span>
+
+                {/* Micro Text Enrichment */}
+                <div
+                    ref={microTextRef}
+                    className="mt-[0.5em] font-medium tracking-[0.4em] text-white/40 uppercase"
+                    style={{ fontSize: '5px' }}
+                >
+                    INFLUENCE · PR · STRATEGY
+                </div>
             </div>
+
+            {/* Supporting Icons */}
+            {SUPPORTING_ICONS.map(({ Icon, desktop, mobile, type }, i) => (
+                <div
+                    key={i}
+                    ref={el => iconsRef.current[i] = el}
+                    className={`absolute text-purple-400 pointer-events-none
+                        ${!desktop ? 'hidden' : 'md:block'}
+                        ${!mobile ? 'hidden' : 'block md:hidden'}`}
+                    style={{
+                        ...(desktop && typeof window !== 'undefined' && window.innerWidth >= 768 ? desktop : {}),
+                        ...(mobile && typeof window !== 'undefined' && window.innerWidth < 768 ? mobile : {}),
+                        opacity: type === 'floating' ? 0.08 : 0.12,
+                        filter: type === 'floating' ? 'blur(1px)' : 'blur(0.5px)',
+                    }}
+                >
+                    <Icon
+                        size={type === 'floating' ? 32 : (window.innerWidth >= 768 ? 48 : 36)}
+                        strokeWidth={1}
+                    />
+                </div>
+            ))}
+
+            {/* Decorative Corner Plus Symbols */}
+            {[
+                { top: '15%', left: '15%' },
+                { top: '15%', right: '15%' },
+                { bottom: '15%', left: '15%' },
+                { bottom: '15%', right: '15%' }
+            ].map((pos, i) => (
+                <div
+                    key={`plus-${i}`}
+                    ref={el => plusRefs.current[i] = el}
+                    className="absolute text-primary/80 font-extralight pointer-events-none select-none z-[-1] text-4xl md:text-6xl"
+                    style={{ ...pos, opacity: 1 }}
+                >
+                    +
+                </div>
+            ))}
         </div>
     );
 }
