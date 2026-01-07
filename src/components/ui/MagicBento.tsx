@@ -116,9 +116,9 @@ const BentoCard = ({
         {/* Grain Texture */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-        {/* Adjusted Gradient for mobile readability */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#030305] via-[#030305]/70 md:via-[#030305]/60 to-transparent opacity-90 transition-opacity duration-700"
-          style={{ backgroundSize: '100% 150%', backgroundPosition: 'center bottom' }} />
+        {/* Refined subtle gradient for text readability without washing out the image */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#030005]/90 via-[#030005]/20 to-transparent transition-opacity duration-700"
+          style={{ backgroundSize: '100% 100%', backgroundPosition: 'bottom' }} />
       </div>
 
       {/* Interactive Spotlight (Disabled on mobile by CSS) */}

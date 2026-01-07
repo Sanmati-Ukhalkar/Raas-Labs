@@ -76,7 +76,7 @@ const youtubeCards = [
 
 export const CollaborationsSection = () => {
   return (
-    <section className="py-24 md:py-44 relative overflow-hidden bg-[#030305]">
+    <section className="py-20 md:py-32 relative overflow-hidden bg-[#030305]">
       <div className="section-divider absolute top-0 left-0 right-0 opacity-10" />
 
       {/* Background Atmosphere */}
@@ -124,7 +124,7 @@ export const CollaborationsSection = () => {
           <FadeIn delay={200}>
             <MagicBento
               cards={bollywoodCards}
-              gridClassName="grid-cols-1 md:grid-cols-6 md:grid-rows-2 auto-rows-fr md:h-[90vh] gap-4 md:gap-8"
+              gridClassName="grid-cols-1 md:grid-cols-6 md:grid-rows-2 auto-rows-fr md:h-[75vh] gap-4 md:gap-8"
             />
           </FadeIn>
         </div>
@@ -145,7 +145,7 @@ export const CollaborationsSection = () => {
           <FadeIn delay={200}>
             <MagicBento
               cards={youtubeCards}
-              gridClassName="grid-cols-1 md:grid-cols-6 md:grid-rows-2 auto-rows-fr md:h-[90vh] gap-4 md:gap-8"
+              gridClassName="grid-cols-1 md:grid-cols-6 md:grid-rows-2 auto-rows-fr md:h-[75vh] gap-4 md:gap-8"
             />
           </FadeIn>
         </div>
