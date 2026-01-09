@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { Header } from "@/components/sections/Header";
-import SiteLoader from "@/components/ui/SiteLoader";
+
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/Home"));
@@ -42,7 +42,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SiteLoader />
+
       <BrowserRouter>
         <SmoothScroll>
           <Header />

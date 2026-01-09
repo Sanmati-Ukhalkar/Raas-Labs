@@ -1,7 +1,9 @@
 import { useRef, useLayoutEffect } from 'react';
+import { motion } from 'motion/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Share2, BarChart3, Users, Video, Award, Hexagon, Circle, Square, Triangle, Sparkles, Zap } from 'lucide-react';
+import BlurText from './BlurText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -210,69 +212,85 @@ export default function HeroBrandTransition() {
              top: 50%;
              transform: translate(-50%, -50%);
              width: max-content;
-             pointer-events: none; /* Let clicks pass to header if needed, but visually centered */
+             pointer-events: none;
           }
           
-          /* Hide real navbar text while HeroBrandTransition is active (persists after scroll) */
+          /* Hide real navbar text while HeroBrandTransition is active */
           .hide-nav-text .sm-logo span {
              opacity: 0 !important;
              visibility: hidden;
           }
        `}</style>
-            {/* The Text Element */}
-            <div ref={wrapperRef} className="absolute flex flex-col items-center whitespace-nowrap text-white pointer-events-none origin-center">
-                <span ref={textRef} className="text-[17px] font-extrabold tracking-tight leading-none">
-                    The Increations
-                </span>
 
-                {/* Micro Text Enrichment */}
-                <div
-                    ref={microTextRef}
-                    className="mt-[0.5em] font-medium tracking-[0.4em] text-white/40 uppercase"
-                    style={{ fontSize: '5px' }}
-                >
-                    INFLUENCE · PR · STRATEGY
-                </div>
+            {/* Supporting Icons - Lower Z-Index */}
+            <div className="absolute inset-0 z-10">
+                {SUPPORTING_ICONS.map(({ Icon, desktop, mobile, type }, i) => (
+                    <motion.div
+                        key={i}
+                        ref={el => iconsRef.current[i] = el}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: type === 'floating' ? 0.06 : 0.1, y: 0 }}
+                        transition={{ duration: 1.2, delay: 0.8 + (i * 0.05), ease: "easeOut" }}
+                        className={`absolute text-purple-400 pointer-events-none
+                            ${!desktop ? 'hidden' : 'md:block'}
+                            ${!mobile ? 'hidden' : 'block md:hidden'}`}
+                        style={{
+                            ...(desktop && typeof window !== 'undefined' && window.innerWidth >= 768 ? desktop : {}),
+                            ...(mobile && typeof window !== 'undefined' && window.innerWidth < 768 ? mobile : {}),
+                            filter: type === 'floating' ? 'blur(2px)' : 'blur(0.5px)',
+                        }}
+                    >
+                        <Icon
+                            size={type === 'floating' ? 32 : (typeof window !== 'undefined' && window.innerWidth >= 768 ? 48 : 36)}
+                            strokeWidth={1}
+                        />
+                    </motion.div>
+                ))}
+
+                {/* Decorative Corner Plus Symbols */}
+                {[
+                    { top: '15%', left: '15%' },
+                    { top: '15%', right: '15%' },
+                    { bottom: '15%', left: '15%' },
+                    { bottom: '15%', right: '15%' }
+                ].map((pos, i) => (
+                    <motion.div
+                        key={`plus-${i}`}
+                        ref={el => plusRefs.current[i] = el}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.6 + (i * 0.1), ease: "easeOut" }}
+                        className="absolute text-primary/60 font-extralight pointer-events-none select-none text-4xl md:text-6xl"
+                        style={{ ...pos }}
+                    >
+                        +
+                    </motion.div>
+                ))}
             </div>
 
-            {/* Supporting Icons */}
-            {SUPPORTING_ICONS.map(({ Icon, desktop, mobile, type }, i) => (
-                <div
-                    key={i}
-                    ref={el => iconsRef.current[i] = el}
-                    className={`absolute text-purple-400 pointer-events-none
-                        ${!desktop ? 'hidden' : 'md:block'}
-                        ${!mobile ? 'hidden' : 'block md:hidden'}`}
-                    style={{
-                        ...(desktop && typeof window !== 'undefined' && window.innerWidth >= 768 ? desktop : {}),
-                        ...(mobile && typeof window !== 'undefined' && window.innerWidth < 768 ? mobile : {}),
-                        opacity: type === 'floating' ? 0.08 : 0.12,
-                        filter: type === 'floating' ? 'blur(1px)' : 'blur(0.5px)',
-                    }}
-                >
-                    <Icon
-                        size={type === 'floating' ? 32 : (window.innerWidth >= 768 ? 48 : 36)}
-                        strokeWidth={1}
-                    />
-                </div>
-            ))}
+            {/* Primary Text Layer - High Z-Index */}
+            <div ref={wrapperRef} className="absolute flex flex-col items-center whitespace-nowrap text-white pointer-events-none origin-center z-20">
+                <BlurText
+                    text="The Increations"
+                    delay={60}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="text-[18px] font-black tracking-tighter leading-none"
+                    stepDuration={0.25}
+                />
 
-            {/* Decorative Corner Plus Symbols */}
-            {[
-                { top: '15%', left: '15%' },
-                { top: '15%', right: '15%' },
-                { bottom: '15%', left: '15%' },
-                { bottom: '15%', right: '15%' }
-            ].map((pos, i) => (
-                <div
-                    key={`plus-${i}`}
-                    ref={el => plusRefs.current[i] = el}
-                    className="absolute text-primary/80 font-extralight pointer-events-none select-none z-[-1] text-4xl md:text-6xl"
-                    style={{ ...pos, opacity: 1 }}
+                {/* Micro Text Enrichment */}
+                <motion.div
+                    ref={microTextRef}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 0.5, y: 0 }}
+                    transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                    className="mt-[0.5em] font-medium tracking-[0.4em] uppercase"
+                    style={{ fontSize: '6px' }}
                 >
-                    +
-                </div>
-            ))}
+                    INFLUENCE · PR · STRATEGY
+                </motion.div>
+            </div>
         </div>
     );
-}
+};

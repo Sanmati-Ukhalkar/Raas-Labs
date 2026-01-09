@@ -22,18 +22,13 @@ export const Header = () => {
   }));
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[72px]">
+    <header className="fixed top-0 left-0 right-0 z-50 h-[72px] pointer-events-none">
       <GradualBlur
-        className="absolute inset-0 w-full h-full -z-10"
-        position="top"
-        height="100%"
-        strength={10}
-        divCount={8}
-        duration="0s"
-        zIndex={-1}
+        preset="header"
+        className="pointer-events-none"
+        zIndex={0}
       />
-
-      <div className="h-full w-full">
+      <div className="h-full w-full pointer-events-none">
         <StaggeredMenu
           items={staggeredMenuItems}
           logoUrl="/logo.png"

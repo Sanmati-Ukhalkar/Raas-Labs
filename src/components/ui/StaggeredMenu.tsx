@@ -148,8 +148,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     // layerStates.forEach((ls, i) => { ... });
 
     const lastTime = 0;
-    const panelInsertTime = 0.05;
-    const panelDuration = isMobile ? 0.55 : 0.7; // Snappier panel slide
+    const panelInsertTime = 0;
+    const panelDuration = isMobile ? 0.6 : 0.85; // Faster responsive start, elegant finish
 
     tl.fromTo(
       panel,
@@ -157,7 +157,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       {
         xPercent: 0,
         duration: panelDuration,
-        ease: isMobile ? 'power2.out' : 'power2.inOut',
+        ease: 'expo.out', // More premium, fluid easing
         force3D: true,
         onStart: () => {
           panel.style.willChange = 'transform';
@@ -179,9 +179,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         {
           yPercent: 0,
           rotate: 0,
-          duration: isMobile ? 0.65 : 0.8,
-          ease: 'power2.out',
-          stagger: { each: isMobile ? 0.04 : 0.07, from: 'start' }
+          duration: isMobile ? 0.7 : 0.9,
+          ease: 'expo.out',
+          stagger: { each: isMobile ? 0.05 : 0.08, from: 'start' }
         },
         itemsStart
       );
@@ -251,8 +251,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     closeTweenRef.current = gsap.to(all, {
       xPercent: offscreen,
-      duration: 0.35,
-      ease: 'power2.inOut',
+      duration: 0.65, // Increased for smoother, more elegant closing
+      ease: 'expo.inOut',
       overwrite: 'auto',
       onStart: () => { if (panel) panel.style.willChange = 'transform'; },
       onComplete: () => {
@@ -291,14 +291,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       // ensure container never rotates
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
       spinTweenRef.current = gsap
-        .timeline({ defaults: { ease: 'power4.out' } })
-        .to(h, { rotate: 45, duration: 0.5 }, 0)
-        .to(v, { rotate: -45, duration: 0.5 }, 0);
+        .timeline({ defaults: { ease: 'expo.out' } })
+        .to(h, { rotate: 45, duration: 0.4 }, 0)
+        .to(v, { rotate: -45, duration: 0.4 }, 0);
     } else {
       spinTweenRef.current = gsap
-        .timeline({ defaults: { ease: 'power3.inOut' } })
-        .to(h, { rotate: 0, duration: 0.35 }, 0)
-        .to(v, { rotate: 90, duration: 0.35 }, 0)
+        .timeline({ defaults: { ease: 'expo.inOut' } })
+        .to(h, { rotate: 0, duration: 0.55 }, 0)
+        .to(v, { rotate: 90, duration: 0.55 }, 0)
         .to(icon, { rotate: 0, duration: 0.001 }, 0);
     }
   }, []);
@@ -531,8 +531,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             className="absolute inset-0 w-full h-full -z-10 will-change-transform"
             position="top"
             height="100%"
-            strength={isMobile ? 5 : 15}
-            divCount={isMobile ? 3 : 10}
+            strength={isMobile ? 5 : 12}
+            divCount={isMobile ? 3 : 6}
             duration="0s"
             zIndex={-1}
             opacity={1}
@@ -634,11 +634,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-socials-link:hover { color: var(--sm-accent, #B19EEF); }
 .sm-scope .sm-panel-title { margin: 0; font-size: 1rem; font-weight: 600; color: #fff; text-transform: uppercase; }
 .sm-scope .sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-.sm-scope .sm-panel-item { position: relative; color: #ffffff; font-weight: 600; font-size: 3.5rem; cursor: pointer; line-height: 1; letter-spacing: -1px; text-transform: uppercase; transition: color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
+.sm-scope .sm-panel-item { position: relative; color: #ffffff; font-weight: 800; font-size: var(--font-h1); cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
 .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #B19EEF); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
-.sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.2em; right: 3.2em; font-size: 16px; font-weight: 400; color: var(--sm-accent, #B19EEF); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
+.sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.2em; right: 3.2em; font-size: 14px; font-weight: 600; color: var(--sm-accent, #B19EEF); letter-spacing: 0.1em; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
 
 /* Ensure mobile responsiveness for full screen */
 @media (max-width: 768px) {

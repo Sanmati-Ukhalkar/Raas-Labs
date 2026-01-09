@@ -33,36 +33,36 @@ interface ServicesSectionProps {
 
 export const ServicesSection = ({ detailed = false }: ServicesSectionProps) => {
   return (
-    <section className="py-20 lg:py-32 relative">
+    <section className="section-padding relative bg-background">
       {!detailed && <div className="section-divider absolute top-0 left-0 right-0" />}
 
-      <div className="container mx-auto px-6 lg:px-24">
+      <div className="container-standard">
         <FadeIn>
-          <div className="mb-16 lg:mb-24 max-w-2xl">
-            <p className="label-uppercase mb-8">
+          <div className="mb-20 md:mb-28 max-w-2xl">
+            <p className="label-uppercase mb-6">
               {detailed ? 'Our Expertise' : 'What We Do'}
             </p>
-            <h2 className="text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold tracking-[-0.04em] leading-[0.95] mb-8">
-              {detailed ? ' comprehensive ' : 'Our '}<span className="gradient-text">Services</span>
+            <h2 className="mb-8">
+              {detailed ? 'Comprehensive ' : 'Our '}<span className="gradient-text">Services</span>
             </h2>
-            <p className="text-[17px] text-secondary leading-[1.8] max-w-lg">
+            <p className="max-w-lg">
               We help shape narratives, manage perception, and build influence across digital platforms.
             </p>
           </div>
         </FadeIn>
 
-        <div className={`grid ${detailed ? 'gap-8 lg:grid-cols-1' : 'md:grid-cols-2 gap-6'}`}>
+        <div className={`grid ${detailed ? 'gap-8 lg:grid-cols-1' : 'md:grid-cols-2 gap-6 lg:gap-8'}`}>
           {services.map((service, index) => (
-            <FadeIn key={service.title} delay={index * 50}>
-              <div className={`group card-premium ${detailed ? 'p-10 lg:p-14 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start' : 'p-10 lg:p-12'}`}>
+            <FadeIn key={service.title} delay={index * 80} direction="up" blur scale>
+              <div className={`group card-premium h-full ${detailed ? 'p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start' : 'p-8 lg:p-10'}`}>
                 <div className={`${detailed ? 'lg:w-1/3' : ''}`}>
                   <div className="flex items-center gap-4 mb-5">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-300" />
-                    <h3 className="text-[20px] lg:text-[24px] font-semibold tracking-tight group-hover:text-primary transition-colors duration-300">
+                    <h3 className="group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground leading-[1.85] text-[15px]">
+                  <p className="group-hover:text-foreground/80 transition-colors">
                     {service.description}
                   </p>
                 </div>

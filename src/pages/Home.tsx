@@ -6,29 +6,41 @@ import { AuthoritySection } from '@/components/sections/AuthoritySection';
 import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { Footer } from '@/components/sections/Footer';
+import { SectionReveal } from '@/components/ui/SectionReveal';
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
             <main>
                 <HeroSection />
-                <ProofSection />
-                {/* Collaborations can serve as the "Outcomes-first proof" or "Authority" part */}
-                <CollaborationsSection />
 
-                {/* High-level services overview */}
-                <div id="services-preview">
-                    <ServicesSection />
-                </div>
+                <SectionReveal>
+                    <ProofSection />
+                </SectionReveal>
 
-                <AuthoritySection />
+                <SectionReveal>
+                    <CollaborationsSection />
+                </SectionReveal>
 
-                {/* Select case study preview */}
-                <div id="work-preview">
-                    <CaseStudiesSection />
-                </div>
+                <SectionReveal>
+                    <div id="services-preview">
+                        <ServicesSection />
+                    </div>
+                </SectionReveal>
 
-                <CTASection />
+                <SectionReveal>
+                    <AuthoritySection />
+                </SectionReveal>
+
+                <SectionReveal>
+                    <div id="work-preview">
+                        <CaseStudiesSection />
+                    </div>
+                </SectionReveal>
+
+                <SectionReveal>
+                    <CTASection />
+                </SectionReveal>
             </main>
             <Footer />
         </div>
