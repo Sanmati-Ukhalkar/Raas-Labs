@@ -63,63 +63,72 @@ export const CaseStudiesSection = ({ hideHeader = false }: CaseStudiesSectionPro
         )}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <FadeIn key={project.name} delay={index * 80} direction="up" blur scale>
-              <div
-                className="group h-full p-6 md:p-8 lg:p-10 card-premium flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="label-uppercase !text-primary/80">
-                      {project.solution}
-                    </span>
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${project.status === 'Live' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-white/5 text-white/50 border-white/10'}`}>
-                      {project.status === 'Live' && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />}
-                      {project.status}
-                    </span>
-                  </div>
+          {projects.map((project, index) => {
+            const isLive = project.status === 'Live' && project.action?.link && !project.action.disabled;
+            const CardWrapper = isLive ? 'a' : 'div';
+            const wrapperProps = isLive ? {
+              href: project.action.link,
+              target: project.action.external ? "_blank" : "_self",
+              rel: project.action.external ? "noopener noreferrer" : "",
+              className: "group h-full p-6 md:p-8 lg:p-10 card-premium flex flex-col justify-between cursor-pointer block text-left"
+            } : {
+              className: "group h-full p-6 md:p-8 lg:p-10 card-premium flex flex-col justify-between"
+            };
 
-                  <h3 className="text-2xl mb-4 group-hover:text-primary transition-colors duration-300">
-                    {project.name}
-                  </h3>
+            return (
+              <FadeIn key={project.name} delay={index * 80} direction="up" blur scale>
+                {/* @ts-ignore - Dynamic component */}
+                <CardWrapper {...wrapperProps}>
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="label-uppercase !text-primary/80">
+                        {project.solution}
+                      </span>
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${project.status === 'Live' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-white/5 text-white/50 border-white/10'}`}>
+                        {project.status === 'Live' && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />}
+                        {project.status}
+                      </span>
+                    </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-sm font-semibold text-tertiary uppercase tracking-wider mb-2">Overview</p>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {project.problem}
-                      </p>
+                    <h3 className="text-2xl mb-4 group-hover:text-primary transition-colors duration-300">
+                      {project.name}
+                    </h3>
+
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-sm font-semibold text-tertiary uppercase tracking-wider mb-2">Overview</p>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {project.problem}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {project.action && (
-                  <div className="mt-8 pt-6 border-t border-border/50">
-                    {project.action.disabled ? (
-                      <div className="text-sm font-medium text-muted-foreground/50 flex items-center gap-2 cursor-not-allowed">
-                        {project.action.text}
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      </div>
-                    ) : (
-                      <a
-                        href={project.action.link || '#'}
-                        target={project.action.external ? "_blank" : "_self"}
-                        rel={project.action.external ? "noopener noreferrer" : ""}
-                        className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-300 flex items-center gap-2 w-fit"
-                      >
-                        {project.action.text}
-                        <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </FadeIn>
-          ))}
+                  {project.action && (
+                    <div className="mt-8 pt-6 border-t border-border/50">
+                      {project.action.disabled ? (
+                        <div className="text-sm font-medium text-muted-foreground/50 flex items-center gap-2 cursor-not-allowed">
+                          {project.action.text}
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          </svg>
+                        </div>
+                      ) : (
+                        <span
+                          className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-300 flex items-center gap-2 w-fit"
+                        >
+                          {project.action.text}
+                          <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </CardWrapper>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

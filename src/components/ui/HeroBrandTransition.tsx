@@ -278,10 +278,10 @@ export default function HeroBrandTransition() {
                 <motion.div
                     ref={microTextRef}
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 0.5, y: 0 }}
+                    animate={{ opacity: 0.8, y: 0 }}
                     transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-                    className="mt-[0.5em] font-medium tracking-[0.4em] uppercase"
-                    style={{ fontSize: '6px' }}
+                    className="mt-[0.1em] font-medium tracking-[0.3em] uppercase"
+                    style={{ fontSize: '3px' }}
                 >
                     EXECUTION · PRODUCTION · SCALE
                 </motion.div>
