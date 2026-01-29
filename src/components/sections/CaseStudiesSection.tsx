@@ -94,27 +94,29 @@ export const CaseStudiesSection = ({ hideHeader = false }: CaseStudiesSectionPro
                 </div>
 
                 {project.action && (
-                  <div className="mt-8 pt-6 border-t border-border/50 relative z-10">
-                    {project.action.disabled ? (
-                      <div className="text-sm font-medium text-muted-foreground/50 flex items-center gap-2 cursor-not-allowed">
-                        {project.action.text}
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      </div>
-                    ) : (
-                      <a
-                        href={project.action.link || '#'}
-                        target={project.action.external ? "_blank" : "_self"}
-                        rel={project.action.external ? "noopener noreferrer" : ""}
-                        className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-300 flex items-center gap-2 w-fit"
-                      >
-                        {project.action.text}
-                        <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </a>
-                    )}
+                  <div className="mt-8 pt-6 border-t border-border/50">
+                    <div className="relative z-20" onClick={(e) => e.stopPropagation()}>
+                      {project.action.disabled ? (
+                        <div className="text-sm font-medium text-muted-foreground/50 flex items-center gap-2 cursor-not-allowed">
+                          {project.action.text}
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          </svg>
+                        </div>
+                      ) : (
+                        <a
+                          href={project.action.link || '#'}
+                          target={project.action.external ? "_blank" : "_self"}
+                          rel={project.action.external ? "noopener noreferrer" : ""}
+                          className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-300 flex items-center gap-2 w-fit pointer-events-auto"
+                        >
+                          {project.action.text}
+                          <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
