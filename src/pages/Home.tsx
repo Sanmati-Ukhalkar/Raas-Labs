@@ -17,11 +17,9 @@ const Home = () => {
                     </div>
                 </SectionReveal>
 
-                <SectionReveal>
-                    <div id="work-preview">
-                        <CaseStudiesSection />
-                    </div>
-                </SectionReveal>
+                <div id="work-preview">
+                    <CaseStudiesSection />
+                </div>
 
                 <SectionReveal>
                     <CTASection />
