@@ -270,8 +270,16 @@ export default function HeroBrandTransition() {
 
             {/* Primary Text Layer - High Z-Index */}
             <div ref={wrapperRef} className="absolute flex flex-col items-center whitespace-nowrap text-white pointer-events-none origin-center z-20">
-                <h1 className="text-[18px] font-black tracking-tighter leading-none">
-                    RAAS Labs
+                {/* Main Brand Text */}
+                <h1 className="flex flex-col items-center leading-none">
+                    {/* RAAS - Large white */}
+                    <span className="text-[18px] font-black tracking-tighter text-white">
+                        RAAS
+                    </span>
+                    {/* Labs - Tiny with wide spacing to match RAAS width */}
+                    <span className="text-[4px] font-medium tracking-[1.2em] uppercase text-white/40 mt-[0.2em]">
+                        LABS
+                    </span>
                 </h1>
 
                 {/* Micro Text Enrichment */}
@@ -280,8 +288,8 @@ export default function HeroBrandTransition() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 0.8, y: 0 }}
                     transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-                    className="mt-[0.1em] font-medium tracking-[0.3em] uppercase"
-                    style={{ fontSize: '3px' }}
+                    className="mt-[0.25em] font-medium tracking-[0.3em] uppercase text-white/60"
+                    style={{ fontSize: '2.5px' }}
                 >
                     EXECUTION · PRODUCTION · SCALE
                 </motion.div>

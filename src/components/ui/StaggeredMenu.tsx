@@ -468,7 +468,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           aria-label="Main navigation header"
         >
           <div className="sm-logo flex items-center select-none pointer-events-auto cursor-pointer" aria-label="Logo" onClick={() => window.location.href = '/'}>
-            <span className="text-[18px] font-bold tracking-tight text-white leading-none">RAAS Labs</span>
+            <span className="text-[29px] font-bold tracking-tight text-white leading-none">RAAS Labs</span>
           </div>
 
           <button

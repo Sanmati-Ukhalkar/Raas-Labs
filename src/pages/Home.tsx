@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/sections/HeroSection';
+import { ClientLogosSection } from '@/components/sections/ClientLogosSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
 import { CTASection } from '@/components/sections/CTASection';
@@ -9,20 +10,26 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
             <main>
-                <HeroSection />
+                <section id="home">
+                    <HeroSection />
+                </section>
+
+                <ClientLogosSection />
 
                 <SectionReveal>
-                    <div id="services-preview">
+                    <section id="services">
                         <ServicesSection />
-                    </div>
+                    </section>
                 </SectionReveal>
 
-                <div id="work-preview">
+                <section id="work">
                     <CaseStudiesSection />
-                </div>
+                </section>
 
                 <SectionReveal>
-                    <CTASection />
+                    <section id="contact">
+                        <CTASection />
+                    </section>
                 </SectionReveal>
             </main>
             <Footer />
