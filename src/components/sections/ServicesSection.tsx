@@ -1,29 +1,24 @@
 import { FadeIn } from '@/components/FadeIn';
+import { motion } from 'framer-motion';
 
 const services = [
   {
-    title: 'Political Consultancy',
-    description: 'End-to-end political communication including digital presence, campaign messaging, public sentiment management, and reputation building.',
-    outcomes: 'Election victories, shifted public sentiment, crisis immunity.',
-    howItWorks: 'We deploy data-driven narratives and hyper-targeted content to sway undecided voters and fortify base support.'
+    title: 'AI Voice Agents',
+    description: 'Inbound & outbound voice agents capable of handling customer support and complex inquiries.',
+    outcomes: 'Lead qualification & call automation.',
+    howItWorks: 'Multi-language support with near-human latency.'
   },
   {
-    title: 'Celebrity & Influencer PR',
-    description: 'Personal brand positioning, media amplification, viral reel strategy, and image control for celebrities and high-reach influencers.',
-    outcomes: 'Viral growth, premium brand deals, crisis mitigation.',
-    howItWorks: 'We engineer vitality through trend-jacking and algorithmic dominance while protecting the personal brand from volatility.'
+    title: 'AI Chat Agents',
+    description: 'Website & internal support chatbots for admissions, helpdesk, and business inquiries.',
+    outcomes: 'Structured, reliable conversation flows.',
+    howItWorks: 'Knowledge-based and intent-driven responses.'
   },
   {
-    title: 'Content & Media Production',
-    description: 'High-quality reels, promotional videos, political content shoots, video editing, and production.',
-    outcomes: 'High engagement rates, professional perception, narrative retention.',
-    howItWorks: 'Studio-grade production meets social-first editing. We create content that stops the scroll and plants the message.'
-  },
-  {
-    title: 'Digital Reputation Management',
-    description: 'Consistent organic growth, narrative control, crisis handling, and long-term authority building.',
-    outcomes: 'Search sovereignty, negative suppression, trust authority.',
-    howItWorks: 'We flood the zone with positive, authoritative signals to bury negatives and own the first page of search results.'
+    title: 'Custom Software Projects',
+    description: 'Custom web & app development including AI-powered internal tools and automation systems.',
+    outcomes: 'Automation-driven business systems.',
+    howItWorks: 'Built for scale and industrial production use.'
   }
 ];
 
@@ -40,7 +35,7 @@ export const ServicesSection = ({ detailed = false }: ServicesSectionProps) => {
         <FadeIn>
           <div className="mb-20 md:mb-28 max-w-2xl">
             <p className="label-uppercase mb-6">
-              {detailed ? 'Our Expertise' : 'What We Do'}
+              'What We Do'
             </p>
             <h2 className="mb-8">
               {detailed ? 'Comprehensive ' : 'Our '}<span className="gradient-text">Services</span>
@@ -54,7 +49,11 @@ export const ServicesSection = ({ detailed = false }: ServicesSectionProps) => {
         <div className={`grid ${detailed ? 'gap-8 lg:grid-cols-1' : 'md:grid-cols-2 gap-6 lg:gap-8'}`}>
           {services.map((service, index) => (
             <FadeIn key={service.title} delay={index * 80} direction="up" blur scale>
-              <div className={`group card-premium h-full ${detailed ? 'p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start' : 'p-8 lg:p-10'}`}>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className={`group card-premium h-full ${detailed ? 'p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start' : 'p-6 md:p-8 lg:p-10'}`}
+              >
                 <div className={`${detailed ? 'lg:w-1/3' : ''}`}>
                   <div className="flex items-center gap-4 mb-5">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-300" />
@@ -79,7 +78,7 @@ export const ServicesSection = ({ detailed = false }: ServicesSectionProps) => {
                     </div>
                   </div>
                 )}
-              </div>
+              </motion.div>
             </FadeIn>
           ))}
         </div>

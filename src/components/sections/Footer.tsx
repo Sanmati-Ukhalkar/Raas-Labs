@@ -7,9 +7,9 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 mb-16 items-baseline">
           {/* About */}
           <div>
-            <h2 className="mb-5 !text-lg !font-bold tracking-tight">The Increations</h2>
+            <h2 className="mb-5 !text-lg !font-bold tracking-tight">RAAS Labs</h2>
             <p className="max-w-sm !text-sm leading-relaxed">
-              A premium digital-first PR and political consultancy agency helping leaders, public figures, and global brands build undeniable influence and lasting authority.
+              The experimental production arm of RAAS. We engineer high-impact digital experiences and systems for global entities.
             </p>
           </div>
 
@@ -27,18 +27,18 @@ export const Footer = () => {
                 +91-7077149767
               </a>
               <a
-                href="mailto:contact@theincreations.com"
+                href="mailto:contact@raaslabs.com"
                 className="block text-secondary hover:text-foreground transition-all duration-200"
                 aria-label="Email us for inquiries"
               >
-                contact@theincreations.com
+                contact@raaslabs.com
               </a>
             </div>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border/40 text-xs text-tertiary flex flex-col md:flex-row justify-between gap-4">
-          <p>© 2025 The Increations. All rights reserved.</p>
+          <p>© 2025 RAAS Labs. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

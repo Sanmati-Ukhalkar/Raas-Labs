@@ -1,9 +1,9 @@
 import { FadeIn } from '@/components/FadeIn';
 
 const points = [
-  'Active experience across political, celebrity, and influencer campaigns',
-  'Dedicated teams assigned to each project',
-  'Capability to manage high-reach, reputation-sensitive campaigns',
+  'Active deployment across high-stakes political and media environments',
+  'Dedicated engineering units assigned to each project',
+  'Capability to manage high-throughput, reputation-sensitive operations',
   'Execution across multiple digital platforms and media formats',
 ];
 

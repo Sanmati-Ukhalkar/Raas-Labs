@@ -1,20 +1,43 @@
 import { Footer } from '@/components/sections/Footer';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/FadeIn';
+import { PageTransition } from '@/components/ui/PageTransition';
 
 const Contact = () => {
     return (
-        <div className="min-h-screen bg-background text-foreground flex flex-col">
+        <PageTransition className="min-h-screen bg-background text-foreground flex flex-col">
             <main className="flex-grow pt-32 pb-20 justify-center flex flex-col">
                 <section className="container mx-auto px-6 lg:px-24">
                     <FadeIn>
                         <div className="max-w-3xl mx-auto text-center">
                             <h1 className="text-display font-bold tracking-tight mb-8">
-                                Ready to <span className="gradient-text">Dominate?</span>
+                                Start a <span className="gradient-text">Conversation</span>
                             </h1>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-                                We work with a select group of clients who are ready to scale their influence seriously. If that's you, let's talk.
+                                We architect systems for specific entities. If you are ready to deploy, initiate contact.
                             </p>
+
+                            <div className="mb-12 text-left bg-white/5 p-8 rounded-3xl border border-white/10">
+                                <h3 className="text-lg font-semibold text-white mb-6 text-center">Engagement Model</h3>
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    <div className="flex gap-4">
+                                        <div className="flex-none w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm border border-primary/20">1</div>
+                                        <p className="text-sm text-muted-foreground pt-1.5">Short discovery call to understand the use case</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="flex-none w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm border border-primary/20">2</div>
+                                        <p className="text-sm text-muted-foreground pt-1.5">Clear scope and solution definition</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="flex-none w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm border border-primary/20">3</div>
+                                        <p className="text-sm text-muted-foreground pt-1.5">Build and deploy the AI agent or system</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="flex-none w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm border border-primary/20">4</div>
+                                        <p className="text-sm text-muted-foreground pt-1.5">Ongoing support or structured handover</p>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                                 <Button
@@ -58,7 +81,7 @@ const Contact = () => {
                 </section>
             </main>
             <Footer />
-        </div>
+        </PageTransition>
     );
 };
 

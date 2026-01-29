@@ -10,10 +10,10 @@ export const CTASection = () => {
         <FadeIn>
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="mb-8">
-              Let's <span className="gradient-text">Work</span> Together
+              Partner on <span className="gradient-text">Scale</span>
             </h2>
             <p className="mb-12 max-w-lg mx-auto">
-              If you're looking to build influence with intent and scale, let's start a conversation.
+              If you require industrial-grade production and digital architecture, let's start.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

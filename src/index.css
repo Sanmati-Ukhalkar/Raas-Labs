@@ -47,19 +47,19 @@
     --text-secondary: 0 0% 70%;
     --text-tertiary: 0 0% 45%;
 
-    /* Standard Layout Spacing */
+    /* Standard Layout Spacing - Mobile Optimized */
     --max-width: 1280px;
     --container-padding: clamp(1rem, 4vw, 3rem);
-    --section-gap: clamp(6rem, 12vh, 8.75rem);
-    --section-padding: clamp(4.5rem, 10vh, 7.5rem);
+    --section-gap: clamp(4rem, 8vh, 6rem);
+    --section-padding: clamp(3rem, 6vh, 5rem);
 
-    /* Typography Scale */
-    --font-h1: clamp(2.75rem, 6vw, 4.5rem);
-    --font-h2: clamp(2.25rem, 5vw, 3.5rem);
-    --font-h3: clamp(1.75rem, 3.5vw, 2.5rem);
-    --font-h4: clamp(1.25rem, 2vw, 1.5rem);
-    --font-body: clamp(1rem, 1.1vw, 1.125rem);
-    --font-body-sm: clamp(0.875rem, 1vw, 1rem);
+    /* Typography Scale - Optimized for leaner look */
+    --font-h1: clamp(2rem, 5vw, 3.25rem);
+    --font-h2: clamp(1.75rem, 4vw, 2.75rem);
+    --font-h3: clamp(1.5rem, 3vw, 2rem);
+    --font-h4: clamp(1.125rem, 2vw, 1.35rem);
+    --font-body: clamp(0.95rem, 1vw, 1.05rem);
+    --font-body-sm: clamp(0.8rem, 0.9vw, 0.9rem);
 
     --line-height-base: 1.6;
     --line-height-tight: 1.1;

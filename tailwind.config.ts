@@ -66,9 +66,9 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
-        'display': ['3.5rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '800' }], // Mobile default
-        'heading': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'subheading': ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'display': ['2.5rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '800' }], // Optimized for mobile first
+        'heading': ['2rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'subheading': ['1.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
       },
       screens: {
         'md': '768px',

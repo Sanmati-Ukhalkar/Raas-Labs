@@ -468,15 +468,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           aria-label="Main navigation header"
         >
           <div className="sm-logo flex items-center select-none pointer-events-auto cursor-pointer" aria-label="Logo" onClick={() => window.location.href = '/'}>
-            <img
-              src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
-              alt="Logo"
-              className="sm-logo-img block h-8 w-auto object-contain"
-              draggable={false}
-              width={110}
-              height={24}
-            />
-            <span className="ml-3 text-[17px] font-semibold tracking-tight text-white leading-none">The Increations</span>
+            <span className="text-[18px] font-bold tracking-tight text-white leading-none">RAAS Labs</span>
           </div>
 
           <button
@@ -552,7 +544,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   items.map((it, idx) => (
                     <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                       <a
-                        className="sm-panel-item relative text-white font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
+                        className="sm-panel-item relative text-white font-semibold text-[3rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
                         href={it.link}
                         aria-label={it.ariaLabel}
                         data-index={idx + 1}
@@ -642,7 +634,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
 /* Ensure mobile responsiveness for full screen */
 @media (max-width: 768px) {
-  .sm-scope .sm-panel-item { font-size: 2rem; padding-right: 1.5em; } /* Smaller text */
+  .sm-scope .sm-panel-item { font-size: 1.75rem; padding-right: 1.5em; } /* Smaller text */
   .sm-scope .staggered-menu-panel { padding: 7em 1.5em 8em 1.5em; } /* Safe spacing for notches and bottom bars */
   .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { font-size: 11px; right: 0; top: 0.4em; opacity: 0.4 !important; } /* Subtle numbers */
   .sm-scope .sm-panel-itemWrap { margin-bottom: 0.5rem; }

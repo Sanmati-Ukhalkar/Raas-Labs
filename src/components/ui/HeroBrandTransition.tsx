@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Share2, BarChart3, Users, Video, Award, Hexagon, Circle, Square, Triangle, Sparkles, Zap } from 'lucide-react';
-import BlurText from './BlurText';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -270,14 +270,9 @@ export default function HeroBrandTransition() {
 
             {/* Primary Text Layer - High Z-Index */}
             <div ref={wrapperRef} className="absolute flex flex-col items-center whitespace-nowrap text-white pointer-events-none origin-center z-20">
-                <BlurText
-                    text="The Increations"
-                    delay={60}
-                    animateBy="letters"
-                    direction="bottom"
-                    className="text-[18px] font-black tracking-tighter leading-none"
-                    stepDuration={0.25}
-                />
+                <h1 className="text-[18px] font-black tracking-tighter leading-none">
+                    RAAS Labs
+                </h1>
 
                 {/* Micro Text Enrichment */}
                 <motion.div
@@ -288,7 +283,7 @@ export default function HeroBrandTransition() {
                     className="mt-[0.5em] font-medium tracking-[0.4em] uppercase"
                     style={{ fontSize: '6px' }}
                 >
-                    INFLUENCE · PR · STRATEGY
+                    EXECUTION · PRODUCTION · SCALE
                 </motion.div>
             </div>
         </div>
