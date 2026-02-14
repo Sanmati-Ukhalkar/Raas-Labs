@@ -1,12 +1,12 @@
-import { FadeIn } from '@/components/FadeIn';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   {
     name: 'Atlaren',
     year: '2024',
-    description: 'A business-focused digital platform built to present services clearly, improve online presence, and support customer engagement. The project involved custom UI/UX design, responsive development, and SEO optimization.',
+    description: 'A business-focused digital platform built to present services clearly, improve online presence, and support customer engagement.',
     category: 'Custom Software',
     status: 'Live',
     image: '/projects/atlaren.png',
@@ -15,7 +15,7 @@ const projects = [
   {
     name: 'Growwin Internationals',
     year: '2024',
-    description: 'An international trade and business website designed to showcase global services, company credibility, and export-focused operations. Features include multi-language support and partner network showcase.',
+    description: 'An international trade and business website designed to showcase global services, company credibility, and export-focused operations.',
     category: 'Business Website',
     status: 'Live',
     image: '/projects/growwin.png',
@@ -24,7 +24,7 @@ const projects = [
   {
     name: 'Xrone',
     year: '2024',
-    description: 'A modern technology product website built to present a digital brand, product vision, and technical capabilities. Includes 3D product visualizations and smooth animations.',
+    description: 'A modern technology product website built to present a digital brand, product vision, and technical capabilities.',
     category: 'Product Website',
     status: 'Live',
     image: '/projects/xrone.png',
@@ -33,7 +33,7 @@ const projects = [
   {
     name: 'AI Voice Agent',
     year: '2025',
-    description: 'An AI-powered voice agent deployed for handling inbound customer calls, inquiries, and support workflows at scale. Built with LiveKit and OpenAI for natural conversations.',
+    description: 'An AI-powered voice agent deployed for handling inbound customer calls, inquiries, and support workflows at scale.',
     category: 'AI Voice Agent',
     status: 'Private',
     image: '/projects/ai-voice.png',
@@ -42,7 +42,7 @@ const projects = [
   {
     name: 'AI Chat Agent',
     year: '2025',
-    description: 'An internal and customer-facing AI chat agent built to manage structured conversations, FAQs, and business inquiries. Powered by LangChain and GPT-4 for intelligent responses.',
+    description: 'An internal and customer-facing AI chat agent built to manage structured conversations, FAQs, and business inquiries.',
     category: 'AI Chat Agent',
     status: 'Private',
     image: '/projects/ai-chat.png',
@@ -50,245 +50,141 @@ const projects = [
   }
 ];
 
-interface CaseStudiesSectionProps {
-  hideHeader?: boolean;
-}
-
-export const CaseStudiesSection = ({ hideHeader = false }: CaseStudiesSectionProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  // Get visible cards (show 5 cards: 2 left, center, 2 right)
-  const getCardStyle = (index: number) => {
-    const diff = index - activeIndex;
-    const normalizedDiff = ((diff + projects.length) % projects.length);
-    const adjustedDiff = normalizedDiff > projects.length / 2 ? normalizedDiff - projects.length : normalizedDiff;
-
-    // Base styles for each position
-    const positions: Record<number, { x: number; scale: number; rotate: number; zIndex: number; opacity: number }> = {
-      '-2': { x: -320, scale: 0.7, rotate: -8, zIndex: 1, opacity: 0.4 },
-      '-1': { x: -180, scale: 0.85, rotate: -4, zIndex: 2, opacity: 0.7 },
-      '0': { x: 0, scale: 1, rotate: 0, zIndex: 3, opacity: 1 },
-      '1': { x: 180, scale: 0.85, rotate: 4, zIndex: 2, opacity: 0.7 },
-      '2': { x: 320, scale: 0.7, rotate: 8, zIndex: 1, opacity: 0.4 },
-    };
-
-    // Get position or hide if too far
-    if (adjustedDiff < -2 || adjustedDiff > 2) {
-      return { x: adjustedDiff < 0 ? -500 : 500, scale: 0.5, rotate: 0, zIndex: 0, opacity: 0 };
-    }
-
-    return positions[adjustedDiff.toString() as keyof typeof positions] || positions['0'];
-  };
+export const CaseStudiesSection = () => {
+  // Default to first item active
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section className="section-padding relative bg-background overflow-hidden">
-      <div className="section-divider absolute top-0 left-0 right-0" />
-
-      <div className="container-standard relative">
-        {!hideHeader && (
-          <FadeIn>
-            <div className="mb-12 md:mb-20 text-center">
-              <span className="label-uppercase !text-primary mb-4 block">Portfolio</span>
-              <h2 className="mb-4">
-                What We <span className="gradient-text">Ship</span>
-              </h2>
-              <p className="text-lg text-muted-foreground/90 leading-relaxed max-w-2xl mx-auto">
-                Real projects we've built for real clients. Hover to explore.
-              </p>
-            </div>
-          </FadeIn>
-        )}
+    <section className="bg-background relative min-h-screen flex flex-col items-center justify-center py-20 overflow-hidden">
+      {/* Header */}
+      <div className="container-standard mb-12 text-center relative z-20">
+        <span className="label-uppercase mb-4 block text-primary">Portfolio</span>
+        <h2 className="mb-6 text-4xl md:text-5xl font-bold">
+          What We <span className="gradient-text">Ship</span>
+        </h2>
+        <p className="text-lg text-muted-foreground/60 leading-relaxed max-w-2xl mx-auto">
+          Real projects we've built for real clients. Hover to explore.
+        </p>
       </div>
 
-      {/* Carousel Container */}
-      <div className="relative h-[500px] md:h-[550px] flex items-center justify-center">
-        {/* Navigation Arrow - Left */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 md:left-12 z-20 p-3 md:p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 backdrop-blur-sm group"
-          aria-label="Previous project"
-        >
-          <svg className="w-5 h-5 md:w-6 md:h-6 text-white/70 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+      {/* Accordion Container */}
+      <div className="w-full max-w-[95%] lg:max-w-[1400px] h-[60vh] md:h-[70vh] flex flex-col md:flex-row gap-2 md:gap-4 px-4 font-sans">
+        {projects.map((project, index) => {
+          const isActive = activeIndex === index;
 
-        {/* Cards Container */}
-        <div className="relative w-full max-w-[350px] md:max-w-[400px] h-[420px] md:h-[480px]">
-          <AnimatePresence mode="popLayout">
-            {projects.map((project, index) => {
-              const style = getCardStyle(index);
-              const isHovered = hoveredIndex === index;
-              const isCenter = index === activeIndex;
+          return (
+            <motion.div
+              key={project.name}
+              layout
+              // Use standard React event for better reliability than Framer's onHoverStart
+              onMouseEnter={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(index)}
+              animate={{
+                flex: isActive ? "8 1 0%" : "1 1 0%",
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 20
+              }}
+              className={`relative rounded-3xl overflow-hidden cursor-pointer group bg-neutral-900 border border-white/5`}
+            >
+              {/* Background Image */}
+              <motion.div
+                className="absolute inset-0 w-full h-full"
+                animate={{ scale: isActive ? 1.05 : 1.15 }}
+                transition={{ duration: 0.8 }}
+              >
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className={`w-full h-full object-cover transition-opacity duration-500 ${isActive ? 'opacity-40' : 'opacity-60 grayscale'}`}
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-90' : 'opacity-70'}`} />
+              </motion.div>
 
-              return (
-                <motion.div
-                  key={project.name}
-                  className="absolute top-0 left-0 w-full h-full cursor-pointer"
-                  initial={false}
-                  animate={{
-                    x: style.x,
-                    scale: style.scale,
-                    rotateZ: style.rotate,
-                    zIndex: isHovered && isCenter ? 10 : style.zIndex,
-                    opacity: style.opacity,
-                  }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                  onClick={() => setActiveIndex(index)}
-                  onHoverStart={() => isCenter && setHoveredIndex(index)}
-                  onHoverEnd={() => setHoveredIndex(null)}
-                >
-                  <div
-                    className={`relative w-full h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${isCenter ? 'shadow-[0_25px_60px_rgba(0,0,0,0.5)]' : ''
-                      }`}
-                  >
-                    {/* Image Background */}
+              {/* Content Wrapper */}
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end overflow-hidden">
+
+                {/* Always Visible: Title (Bottom or Vertical) */}
+                <motion.div layout="position" className="relative z-10 w-full h-full flex flex-col justify-end">
+                  {!isActive ? (
+                    // Collapsed State Label
                     <motion.div
-                      className="absolute inset-0"
-                      animate={{ opacity: isHovered && isCenter ? 0 : 1 }}
-                      transition={{ duration: 0.4 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute bottom-4 left-4 md:inset-0 md:p-4"
                     >
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Dark overlay for non-center cards */}
-                      <div className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${isCenter ? 'opacity-0' : 'opacity-60'}`} />
+                      {/* Mobile: Simple text at bottom */}
+                      <div className="md:hidden">
+                        <h3 className="text-sm font-bold text-white/70 tracking-wider whitespace-nowrap truncate">{project.name}</h3>
+                      </div>
 
-                      {/* Bottom gradient for title */}
-                      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-
-                      {/* Title overlay on image */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <span className="text-xs font-medium text-white/60 uppercase tracking-wider">
-                          {project.category}
-                        </span>
-                        <h3 className="text-xl md:text-2xl font-bold text-white mt-1">
-                          {project.name}
-                        </h3>
+                      {/* Desktop: Vertical Text */}
+                      <div className="hidden md:flex md:items-end md:justify-center md:h-full md:pb-8">
+                        <div className="writing-mode-vertical rotate-180 whitespace-nowrap">
+                          <h3 className="text-xl font-bold text-white/50 tracking-wider group-hover:text-white transition-colors">
+                            {project.name}
+                          </h3>
+                        </div>
                       </div>
                     </motion.div>
-
-                    {/* Hover Details Panel - Yellow/Accent Background */}
+                  ) : (
+                    // Expanded State Header
                     <motion.div
-                      className="absolute inset-0 p-6 md:p-8 flex flex-col"
-                      initial={{ opacity: 0 }}
-                      animate={{
-                        opacity: isHovered && isCenter ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.4 }}
-                      style={{
-                        background: 'linear-gradient(135deg, #FACC15 0%, #EAB308 100%)',
-                        pointerEvents: isHovered && isCenter ? 'auto' : 'none',
-                      }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                      className="w-full"
                     >
-                      <div className="flex-1">
-                        <h3 className="text-2xl md:text-3xl font-bold text-black mb-2">
-                          {project.name}
-                        </h3>
-                        <p className="text-xs font-semibold text-black/60 uppercase tracking-wider mb-6">
-                          BUILT IN {project.year}
-                        </p>
-                        <p className="text-sm md:text-base text-black/80 leading-relaxed">
-                          {project.description}
-                        </p>
+                      <div className="inline-flex items-center gap-2 mb-3">
+                        <div className={`w-1.5 h-1.5 rounded-full ${project.status === 'Live' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                        <span className="text-xs font-mono text-white/60 uppercase tracking-widest">
+                          {project.category}
+                        </span>
                       </div>
 
-                      {/* Action Button */}
+                      <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                        {project.name}
+                      </h3>
+
+                      <div className="h-px w-12 bg-white/20 mb-4 md:mb-6" />
+
+                      <p className="text-sm md:text-lg text-white/80 leading-relaxed max-w-xl mb-6 hidden md:block">
+                        {project.description}
+                      </p>
+
+                      {/* Mobile description simplified */}
+                      <p className="text-sm text-white/80 leading-relaxed line-clamp-2 mb-4 md:hidden">
+                        {project.description}
+                      </p>
+
+                      {/* Link Text */}
                       {project.link ? (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full bg-black text-white text-sm font-semibold hover:bg-black/80 transition-colors w-fit"
-                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors text-sm font-medium tracking-wide group/link"
                         >
-                          View Live
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          View Project
+                          <svg className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </a>
                       ) : (
-                        <span className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full bg-black/20 text-black/60 text-sm font-medium w-fit">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                          </svg>
-                          Private Project
+                        <span className="text-white/40 text-sm font-medium cursor-not-allowed">
+                          Internal / Private
                         </span>
                       )}
                     </motion.div>
-
-                    {/* Status Badge (visible on image view) */}
-                    <motion.div
-                      className="absolute top-4 right-4"
-                      animate={{ opacity: isHovered && isCenter ? 0 : 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md ${project.status === 'Live'
-                          ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                          : 'bg-white/20 text-white/80 border border-white/20'
-                        }`}>
-                        {project.status === 'Live' && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        )}
-                        {project.status}
-                      </span>
-                    </motion.div>
-                  </div>
+                  )}
                 </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
-
-        {/* Navigation Arrow - Right */}
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 md:right-12 z-20 p-3 md:p-4 rounded-full bg-primary text-black hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/25 group"
-          aria-label="Next project"
-        >
-          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Pagination Dots */}
-      <div className="flex justify-center items-center gap-3 mt-8">
-        {projects.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className={`transition-all duration-300 rounded-full ${index === activeIndex
-                ? 'w-8 h-3 bg-gradient-to-r from-primary to-accent'
-                : 'w-3 h-3 bg-white/20 hover:bg-white/40'
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Project Counter */}
-      <div className="mt-6 flex justify-center">
-        <div className="flex items-center gap-4 text-sm text-muted-foreground/60">
-          <span className="font-mono text-2xl font-bold text-primary">{String(activeIndex + 1).padStart(2, '0')}</span>
-          <div className="w-12 h-px bg-white/20" />
-          <span className="font-mono text-lg text-white/40">{String(projects.length).padStart(2, '0')}</span>
-        </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

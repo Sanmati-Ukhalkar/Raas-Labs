@@ -37,7 +37,7 @@ export const CTASection = () => {
   };
 
   return (
-    <section className="section-padding relative bg-background overflow-hidden">
+    <section className="section-padding relative bg-white overflow-hidden">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="container-standard">
